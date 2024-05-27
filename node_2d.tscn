@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://i55tryhs4pvu"]
+
+[ext_resource type="PackedScene" uid="uid://yikwa3eafa08" path="res://tank.tscn" id="1_3taq7"]
+[ext_resource type="Script" path="res://GameManager.gd" id="2_ogth4"]
+[ext_resource type="PackedScene" uid="uid://c0f8dgfr2mmne" path="res://selection_rectangle.tscn" id="3_yx3ci"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Tank" parent="." instance=ExtResource("1_3taq7")]
+position = Vector2(287, 142)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_ogth4")
+
+[node name="SelectionRectangle" parent="GameManager" instance=ExtResource("3_yx3ci")]
+modulate = Color(1, 1, 1, 0.458824)
+self_modulate = Color(1, 1, 1, 0.341176)
+position = Vector2(256, 102)
