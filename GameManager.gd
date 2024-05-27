@@ -29,7 +29,9 @@ func _ready():
 	pass # Replace with function body.
 	
 func updateRect(rect: Rect):
-	selectionRectangle.position = rect.topLeft + Vector2(32,32)
+	selectionRectangle.position = rect.topLeft + Vector2(rect.w / 2, rect.h / 2)
+	selectionRectangle.scale.x = rect.w / 64;
+	selectionRectangle.scale.y = rect.h / 64;
 	pass
 
 func _input(event):
