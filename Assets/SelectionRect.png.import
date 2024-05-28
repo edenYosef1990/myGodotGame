@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bobkl11rpulys"
-path="res://.godot/imported/SelectionRect.png-a427125efb63ddb6757119c32a2bff7d.ctex"
+path="res://.godot/imported/SelectionRect.png-6f431127f6020940a85ff92c4f991ae0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SelectionRect.png"
-dest_files=["res://.godot/imported/SelectionRect.png-a427125efb63ddb6757119c32a2bff7d.ctex"]
+source_file="res://Assets/SelectionRect.png"
+dest_files=["res://.godot/imported/SelectionRect.png-6f431127f6020940a85ff92c4f991ae0.ctex"]
 
 [params]
 

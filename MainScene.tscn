@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://i55tryhs4pvu"]
+
+[ext_resource type="PackedScene" uid="uid://yikwa3eafa08" path="res://Entities/tank.tscn" id="1_oyje1"]
+[ext_resource type="Script" path="res://GameManager/GameManager.gd" id="2_lrwqu"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="Tank" parent="." instance=ExtResource("1_oyje1")]
+position = Vector2(287, 142)
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_lrwqu")
+
+[node name="SelectionRectangle" type="ColorRect" parent="GameManager"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0.262745, 0.827451, 0.32549)
