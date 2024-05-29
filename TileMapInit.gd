@@ -1,3 +1,4 @@
+@tool
 extends TileMap
 
 var noise = FastNoiseLite.new()
@@ -9,6 +10,8 @@ func foo(val: float):
 	return val
 
 func create_noise(x_pos: int, y_pos: int, width: int, height: int):
+	noise.seed = 10
+	#noise.cellular_jitter =
 	#noise.cellular_distance_function = FastNoiseLite.DISTANCE_EUCLIDEAN
 	#noise.cellular_return_type =FastNoiseLite.RETURN_DISTANCE 
 	#noise.domain_warp_amplitude = 4.200
@@ -20,8 +23,8 @@ func create_noise(x_pos: int, y_pos: int, width: int, height: int):
 	#noise.cellular_jitter = 0.881
 	for x in range(width):
 		for y in range(height):
-			var val = noise.get_noise_2d(x+x_pos, y+y_pos); 
-			var noiseVal = floori((foo(val) + 1) * 1);
+			var val = noise.get_noise_2d((x+x_pos) * 1.5, (y+y_pos) * 1.5); 
+			var noiseVal = floori((foo(val) + 1) * 1.5);
 			print(noiseVal)
 			set_cell(0, Vector2i(x + x_pos, y + y_pos), 1, Vector2i(4 * noiseVal ,0))
 
