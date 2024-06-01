@@ -16,7 +16,8 @@ func isInRectangle(start: Vector2, end: Vector2, point: Vector2):
 	var dimension = (endRectangle - startRectangle).abs();
 	return topLeft.x <= point.x and point.x <= (topLeft.x + dimension.x) and topLeft.y <= point.y and point.y <= (topLeft.y + dimension.y) 
 
-@onready var selectionRectangle : ColorRect = $SelectionRectangle
+@onready var selectionRectangle : ColorRect = %SelectionRectangle
+@onready var camera: Camera2D = %Camera2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

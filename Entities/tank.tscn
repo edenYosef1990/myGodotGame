@@ -1,16 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://yikwa3eafa08"]
+[gd_scene load_steps=3 format=3 uid="uid://yikwa3eafa08"]
 
-[ext_resource type="Script" path="res://Entities/tank.gd" id="1_6ep81"]
-[ext_resource type="Texture2D" uid="uid://cwp14wi3k2gb6" path="res://Assets/Tank.png" id="1_38utt"]
+[ext_resource type="Script" path="res://Entities/tank.gd" id="1_8r74a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m30dc"]
 size = Vector2(63, 59)
 
 [node name="Tank" type="CharacterBody2D"]
-script = ExtResource("1_6ep81")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_38utt")
+script = ExtResource("1_8r74a")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
@@ -20,14 +16,19 @@ shape = SubResource("RectangleShape2D_m30dc")
 visible = false
 
 [node name="Background" type="ColorRect" parent="HealthBar"]
-offset_left = -21.0
-offset_top = -54.0
-offset_right = 23.0
-offset_bottom = -45.0
+offset_left = -3.0
+offset_top = -16.0
+offset_right = 41.0
+offset_bottom = -7.0
 
 [node name="Bar" type="ColorRect" parent="HealthBar"]
-offset_left = -20.0
-offset_top = -53.0
-offset_right = 22.0
-offset_bottom = -46.0
+offset_left = -2.0
+offset_top = -15.0
+offset_right = 40.0
+offset_bottom = -8.0
 color = Color(0.334844, 0.538155, 0.221632, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(7.21961e-08, 0.672275, 9.62615e-07, 1)
