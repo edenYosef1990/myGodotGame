@@ -72,13 +72,15 @@ script = ExtResource("4_6i1kw")
 unique_name_in_owner = true
 color = Color(0, 0.262745, 0.827451, 0.32549)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(575, 328)
+[node name="myCamera" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(555, 719)
 script = ExtResource("7_ab42k")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="myCamera"]
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="myCamera/CanvasLayer"]
 material = SubResource("ShaderMaterial_rdo7k")
-offset_right = 1801.0
+offset_left = -124.0
+offset_right = 1677.0
 offset_bottom = 1673.0

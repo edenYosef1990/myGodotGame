@@ -17,7 +17,7 @@ func isInRectangle(start: Vector2, end: Vector2, point: Vector2):
 	return topLeft.x <= point.x and point.x <= (topLeft.x + dimension.x) and topLeft.y <= point.y and point.y <= (topLeft.y + dimension.y) 
 
 @onready var selectionRectangle : ColorRect = %SelectionRectangle
-@onready var camera: Camera2D = %Camera2D
+@onready var camera: Camera2D = %myCamera
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -33,8 +33,8 @@ func _input(event):
 	if(event is InputEventMouseButton):
 		if event.is_pressed():
 			gameState = ControlState.Selecting
-			startRectangle = event.position
-			endRectangle = event.position
+			startRectangle = camera.get_global_mouse_position()
+			endRectangle = camera.get_global_mouse_position()
 			updateRect()	
 		else:
 			gameState = ControlState.None
@@ -46,7 +46,7 @@ func _input(event):
 			
 	if(event is InputEventMouseMotion):
 		if gameState == ControlState.Selecting:
-			endRectangle = event.position;
+			endRectangle = camera.get_global_mouse_position()
 			updateRect()
 	pass
 
