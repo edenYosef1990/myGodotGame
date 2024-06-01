@@ -25,7 +25,7 @@ func _ready():
 func updateRect():
 	
 	var topLeft = Vector2(min(startRectangle.x,endRectangle.x), min(startRectangle.y,endRectangle.y))
-	selectionRectangle.position = topLeft;
+	selectionRectangle.set_position(topLeft);
 	selectionRectangle.size = (endRectangle - startRectangle).abs();
 	pass
 

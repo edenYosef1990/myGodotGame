@@ -73,7 +73,7 @@ unique_name_in_owner = true
 color = Color(0, 0.262745, 0.827451, 0.32549)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+position = Vector2(575, 328)
 script = ExtResource("7_ab42k")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
