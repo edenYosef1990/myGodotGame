@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://fqhg3chojibs"]
+[gd_scene load_steps=15 format=3 uid="uid://fqhg3chojibs"]
 
 [ext_resource type="PackedScene" uid="uid://yikwa3eafa08" path="res://Entities/tank.tscn" id="1_oyje1"]
 [ext_resource type="Script" path="res://GameManager/GameManager.gd" id="2_lrwqu"]
@@ -7,9 +7,7 @@
 [ext_resource type="Shader" path="res://tilemap.gdshader" id="3_ive1n"]
 [ext_resource type="Texture2D" uid="uid://cxawcqkiik5qd" path="res://Assets/tiles.png" id="3_msiol"]
 [ext_resource type="Script" path="res://TileMapInit.gd" id="4_6i1kw"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2frl6"]
-shader = ExtResource("2_pv4d8")
+[ext_resource type="Script" path="res://Camera2D.gd" id="7_ab42k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3ijj"]
 shader = ExtResource("2_upqyr")
@@ -49,24 +47,14 @@ texture = ExtResource("3_msiol")
 sources/0 = SubResource("TileSetAtlasSource_demno")
 sources/1 = SubResource("TileSetAtlasSource_cwrn5")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rdo7k"]
+shader = ExtResource("2_pv4d8")
+
 [node name="MainScene" type="Node2D"]
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_lrwqu")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-unique_name_in_owner = true
-position = Vector2(764, 408)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="ScreenInCCT" type="ColorRect" parent="Camera2D/CanvasLayer"]
-material = SubResource("ShaderMaterial_2frl6")
-offset_left = 8.0
-offset_top = -4.0
-offset_right = 1679.0
-offset_bottom = 1669.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 material = SubResource("ShaderMaterial_u3ijj")
@@ -79,10 +67,18 @@ layer_0/tile_data = PackedInt32Array(0, 262145, 0, 65536, 262145, 0, 131072, 524
 script = ExtResource("4_6i1kw")
 
 [node name="Tank" parent="CanvasModulate" instance=ExtResource("1_oyje1")]
-position = Vector2(287, 142)
 
 [node name="SelectionRectangle" type="ColorRect" parent="CanvasModulate"]
 unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 40.0
 color = Color(0, 0.262745, 0.827451, 0.32549)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("7_ab42k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_rdo7k")
+offset_right = 1801.0
+offset_bottom = 1673.0

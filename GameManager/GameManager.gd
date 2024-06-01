@@ -33,8 +33,8 @@ func _input(event):
 	if(event is InputEventMouseButton):
 		if event.is_pressed():
 			gameState = ControlState.Selecting
-			startRectangle = event.global_position
-			endRectangle = event.global_position
+			startRectangle = event.position
+			endRectangle = event.position
 			updateRect()	
 		else:
 			gameState = ControlState.None
@@ -46,7 +46,7 @@ func _input(event):
 			
 	if(event is InputEventMouseMotion):
 		if gameState == ControlState.Selecting:
-			endRectangle = event.global_position;
+			endRectangle = event.position;
 			updateRect()
 	pass
 
