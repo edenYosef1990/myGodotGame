@@ -11,6 +11,8 @@ var gameState = ControlState.None
 var startRectangle : Vector2 = Vector2.ZERO;
 var endRectangle : Vector2 = Vector2.ZERO;
 
+var selectedUnits: Array[int] = []
+
 func isInRectangle(start: Vector2, end: Vector2, point: Vector2):
 	var topLeft = Vector2(min(startRectangle.x,endRectangle.x), min(startRectangle.y,endRectangle.y))
 	var dimension = (endRectangle - startRectangle).abs();
@@ -32,10 +34,15 @@ func updateRect():
 func _input(event):
 	if(event is InputEventMouseButton):
 		if event.is_pressed():
-			gameState = ControlState.Selecting
-			startRectangle = camera.get_global_mouse_position()
-			endRectangle = camera.get_global_mouse_position()
-			updateRect()	
+			if selectedUnits.size() > 0:
+				print("set task")
+				setTask()
+				pass
+			else:
+				gameState = ControlState.Selecting
+				startRectangle = camera.get_global_mouse_position()
+				endRectangle = camera.get_global_mouse_position()
+				updateRect()	
 		else:
 			gameState = ControlState.None
 			deselectAll()
@@ -66,19 +73,28 @@ func doAction():
 
 func selectUnitsInRegion(start: Vector2, end: Vector2):
 	var units = get_tree().get_nodes_in_group("selectable")
+	var currSelectedUnits : Array[int] = Array([], TYPE_INT,  &"", null)
 	if units != null:
 		for unit in units:
 			var unitInWorld = unit as Tank
+			currSelectedUnits.push_back(unit.get_instance_id())
 			if(isInRectangle(start,end,unitInWorld.global_position)):
 				unitInWorld.toggleDisplayHealthBar(true)
 				print("boom")
+	selectedUnits = currSelectedUnits
 	pass
 	
 func deselectAll():
+	selectedUnits = []
 	var units = get_tree().get_nodes_in_group("selectable")
 	if units != null:
 		for unit in units:
 			var unitInWorld = unit as Tank
 			unitInWorld.toggleDisplayHealthBar(false)
+
+func setTask():
+	for id in selectedUnits:
+		var unit = instance_from_id(id) as Tank
+		unit.set_task(camera.get_global_mouse_position())
 	
 	
