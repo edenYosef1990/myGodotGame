@@ -77,9 +77,20 @@ unique_name_in_owner = true
 position = Vector2(555, 719)
 script = ExtResource("7_ab42k")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="myCamera"]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="myCamera/CanvasLayer"]
+[node name="Label" type="Label" parent="UI"]
+offset_left = 106.0
+offset_top = 25.0
+offset_right = 316.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 51
+text = " this is UI!!!!!!"
+
+[node name="CctShaderLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="CctShaderLayer"]
 material = SubResource("ShaderMaterial_rdo7k")
 offset_left = -124.0
 offset_right = 1677.0
