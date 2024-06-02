@@ -52,6 +52,13 @@ func _input(event):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var xDirection = Input.get_axis("ui_left", "ui_right")
+	var yDirection = Input.get_axis("ui_up", "ui_down")
+	var xOffset = 1 * xDirection if xDirection else 0
+	var yOffset = 1 * yDirection if yDirection else 0
+	if xOffset != 0 or yOffset != 0:
+		var cameraPos = camera.position;
+		camera.position += Vector2(xOffset,yOffset)
 	pass
 	
 func doAction():
