@@ -1,0 +1,7 @@
+1) architecture:
+	
+	Input system (keyboard, mouse, UI interaction) =>
+	Game Logic systesm (AI, units tasks, calculations etc...) =>
+	output systems => (units rendering , UI rendering , soundss)
+
+2) nullable replacement: value + enum (maybe define Optional?)
