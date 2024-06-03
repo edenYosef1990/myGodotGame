@@ -13,6 +13,8 @@ var endRectangle : Vector2 = Vector2.ZERO;
 
 var selectedUnits: Array[int] = []
 
+var bulletTemplate = preload("res://Entities/Bullet.tscn")
+
 func isInRectangle(start: Vector2, end: Vector2, point: Vector2):
 	var topLeft = Vector2(min(startRectangle.x,endRectangle.x), min(startRectangle.y,endRectangle.y))
 	var dimension = (endRectangle - startRectangle).abs();
@@ -32,7 +34,7 @@ func updateRect():
 	pass
 
 func _input(event):
-	if(event is InputEventMouseButton):
+	if(event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT):
 		if event.is_pressed():
 			if selectedUnits.size() > 0:
 				print("set task")
@@ -49,8 +51,16 @@ func _input(event):
 			startRectangle = Vector2.ZERO
 			endRectangle = Vector2.ZERO
 			updateRect()
-			
-	if(event is InputEventMouseMotion):
+	elif(event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed()):
+		print("add bullet")
+		var units = get_tree().get_nodes_in_group("selectable")
+		if units != null:
+			for unit in units:
+				var unitInWorld = unit as Tank
+				unitInWorld.toggleDisplayHealthBar(false)
+				var bla = Bullet.new_bullet(unit.position,camera.get_global_mouse_position())
+				get_window().add_child(bla)
+	elif(event is InputEventMouseMotion):
 		if gameState == ControlState.Selecting:
 			endRectangle = camera.get_global_mouse_position()
 			updateRect()
