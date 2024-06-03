@@ -38,11 +38,10 @@ func _input(event):
 				print("set task")
 				setTask()
 				pass
-			else:
-				gameState = ControlState.Selecting
-				startRectangle = camera.get_global_mouse_position()
-				endRectangle = camera.get_global_mouse_position()
-				updateRect()	
+			gameState = ControlState.Selecting
+			startRectangle = camera.get_global_mouse_position()
+			endRectangle = camera.get_global_mouse_position()
+			updateRect()	
 		else:
 			gameState = ControlState.None
 			deselectAll()
@@ -77,10 +76,9 @@ func selectUnitsInRegion(start: Vector2, end: Vector2):
 	if units != null:
 		for unit in units:
 			var unitInWorld = unit as Tank
-			currSelectedUnits.push_back(unit.get_instance_id())
 			if(isInRectangle(start,end,unitInWorld.global_position)):
 				unitInWorld.toggleDisplayHealthBar(true)
-				print("boom")
+				currSelectedUnits.push_back(unit.get_instance_id())
 	selectedUnits = currSelectedUnits
 	pass
 	
